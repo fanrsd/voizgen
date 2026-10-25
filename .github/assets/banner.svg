@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="voizgen">
+<defs>
+<radialGradient id="g1" cx="88%" cy="105%" r="75%"><stop offset="0" stop-color="#24157a" stop-opacity=".6"/><stop offset="1" stop-color="#24157a" stop-opacity="0"/></radialGradient>
+<radialGradient id="g2" cx="2%" cy="-10%" r="55%"><stop offset="0" stop-color="#5fe0f0" stop-opacity=".10"/><stop offset="1" stop-color="#5fe0f0" stop-opacity="0"/></radialGradient>
+<linearGradient id="live" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7a1a" stop-opacity=".45"/><stop offset=".55" stop-color="#24157a" stop-opacity=".55"/><stop offset="1" stop-color="#5fe0f0" stop-opacity=".22"/></linearGradient>
+</defs>
+<rect width="1200" height="300" fill="#000"/>
+<rect width="1200" height="300" fill="url(#g1)"/>
+<rect width="1200" height="300" fill="url(#g2)"/>
+<rect x="748" y="42" width="412" height="216" rx="18" fill="#07070a" fill-opacity=".72" stroke="#24157a"/>
+<circle cx="78" cy="90" r="4" fill="#5fe0f0"><animate attributeName="opacity" values="1;.25;1" dur="2.4s" repeatCount="indefinite"/></circle>
+<text x="92" y="96" font-family="Consolas,monospace" font-size="17" fill="#5fe0f0">fanrsd/voizgen</text>
+<text x="70" y="152" font-family="'Segoe UI',system-ui,sans-serif" font-size="52" font-weight="700" fill="#f2f3ee">voizgen</text>
+<rect x="70" y="170" width="64" height="5" rx="2.5" fill="#ff7a1a"/>
+<text x="70" y="210" font-family="'Segoe UI',system-ui,sans-serif" font-size="21" fill="#9aa0a6">Self-hosted text-to-speech studio with voice cloning.</text>
+<rect x="70" y="238" width="122" height="30" rx="15" fill="#0b0b0c" stroke="#2c2c2e"/><circle cx="86" cy="253" r="5" fill="#f1e05a"/><text x="99" y="259" font-family="Consolas,monospace" font-size="15" fill="#cfd2cb">JavaScript</text><rect x="202.0" y="238" width="122" height="30" rx="15" fill="#0b0b0c" stroke="#2c2c2e"/><circle cx="218.0" cy="253" r="5" fill="#ff7a1a"/><text x="231.0" y="259" font-family="Consolas,monospace" font-size="15" fill="#cfd2cb">Cloudflare</text>
+
+<rect x="770" y="150" width="6" height="24" rx="3" fill="#ff7a1a" opacity=".45"/>
+<rect x="784" y="132" width="6" height="60" rx="3" fill="#ff7a1a" opacity=".75"/>
+<rect x="798" y="146" width="6" height="32" rx="3" fill="#ff7a1a" opacity=".45"/>
+<rect x="812" y="118" width="6" height="88" rx="3" fill="#ff7a1a"/>
+<rect x="826" y="140" width="6" height="44" rx="3" fill="#ff7a1a" opacity=".6"/>
+<rect x="840" y="126" width="6" height="72" rx="3" fill="#5fe0f0"/>
+<rect x="854" y="150" width="6" height="24" rx="3" fill="#ff7a1a" opacity=".45"/>
+<rect x="868" y="136" width="6" height="52" rx="3" fill="#ff7a1a" opacity=".7"/>
+<rect x="882" y="156" width="6" height="12" rx="3" fill="#ff7a1a" opacity=".4"/>
+<circle cx="948" cy="112" r="20" fill="#0d0d10" stroke="#5fe0f0"/>
+<rect x="941" y="100" width="14" height="20" rx="7" fill="#5fe0f0"/>
+<path d="M934 116 a14 14 0 0 0 28 0" stroke="#5fe0f0" stroke-width="2" fill="none"/>
+<path d="M948 132 v10" stroke="#5fe0f0" stroke-width="2"/>
+<path d="M1004 176 h96 a14 14 0 0 0 0 -28 a20 20 0 0 0 -34 -8 a16 16 0 0 0 -26 10 a13 13 0 0 0 -36 26 z" fill="none" stroke="#24157a" stroke-width="2"/>
+<path d="M1040 140 v-14 m-6 7 l6 -7 6 7" stroke="#ff7a1a" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="770" y="222" font-family="Consolas,monospace" font-size="12" fill="#6c6f74">2 engines · cloning · colab gpu</text>
+</svg>

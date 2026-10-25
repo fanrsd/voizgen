@@ -1,3 +1,7 @@
+<div align="center">
+  <img src=".github/assets/banner.svg" alt="voizgen — Self-hosted text-to-speech studio with voice cloning." width="100%">
+</div>
+
 # VoizGen
 
 Studio text-to-speech self-hosted dengan voice cloning dan voice design. GPU Google Colab menghasilkan suara; halaman web mengendalikannya. UI berbahasa Indonesia.
