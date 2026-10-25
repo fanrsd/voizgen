@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VoizGen Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============================== SIDEBAR ============================== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="13" width="3" height="6" rx="1.5" fill="currentColor"/>
+          <rect x="10" y="8" width="3" height="16" rx="1.5" fill="currentColor"/>
+          <rect x="16" y="4" width="3" height="24" rx="1.5" fill="currentColor"/>
+          <rect x="22" y="10" width="3" height="12" rx="1.5" fill="currentColor"/>
+        </svg>
+      </span>
+      <h1 class="brand-name">Voiz<span>Gen</span></h1>
+      <p class="brand-sub">Studio Suara Mandiri</p>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-link is-active" type="button" data-view="studio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M5 11v1a7 7 0 0 0 14 0v-1"/><path d="M12 19v3"/>
+        </svg>
+        Studio Engine
+      </button>
+      <button class="nav-link" type="button" data-view="guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5"/><path d="M12 8h.01"/>
+        </svg>
+        Panduan
+      </button>
+      <button class="nav-link" type="button" data-view="history">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+        </svg>
+        Riwayat
+        <span class="badge" data-hist-count hidden>0</span>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-link" type="button" data-open-cfg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15.5 8.5a3.5 3.5 0 1 0-3.4 4.35L8 17h-2.5v2.5H8L11.15 16.4A3.5 3.5 0 0 0 15.5 8.5Z"/>
+        </svg>
+        Koneksi Worker
+      </button>
+      <a class="nav-link" data-notebook hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/>
+          <path d="M4 16.5h14"/><path d="M9 8h6"/><path d="M9 11.5h4"/>
+        </svg>
+        <span data-notebook-label>Notebook Worker</span>
+      </a>
+      <button class="nav-link nav-danger" type="button" id="btn-forget">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 16l-4-4 4-4"/><path d="M6 12h9"/>
+        </svg>
+        Lupakan Kredensial
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <span class="pill pill-idle" data-status><i></i><span data-status-text>Belum terhubung</span></span>
+      <p class="foot-meta" data-device>Worker belum dihubungkan.</p>
+    </div>
+  </aside>
+
+  <!-- ========================== MOBILE HEADER =========================== -->
+  <header class="mobile-header">
+    <div class="mobile-brand">
+      <span class="mark mark-sm" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="13" width="3" height="6" rx="1.5" fill="currentColor"/>
+          <rect x="10" y="8" width="3" height="16" rx="1.5" fill="currentColor"/>
+          <rect x="16" y="4" width="3" height="24" rx="1.5" fill="currentColor"/>
+          <rect x="22" y="10" width="3" height="12" rx="1.5" fill="currentColor"/>
+        </svg>
+      </span>
+      <strong>Voiz<span class="accent">Gen</span></strong>
+    </div>
+    <div class="mobile-actions">
+      <span class="pill pill-idle" data-status><i></i><span data-status-text>Offline</span></span>
+      <button class="mini-btn" type="button" data-view="guide">Panduan</button>
+      <button class="mini-btn" type="button" data-view="history">Riwayat</button>
+      <button class="mini-btn" type="button" data-open-cfg>Koneksi</button>
+    </div>
+  </header>
+
+  <!-- ============================== CANVAS ============================== -->
+  <main class="canvas">
+
+    <div class="notice" id="whatsnew" hidden>
+      <div>
+        <strong>Baru: arahan naskah.</strong>
+        Sisipkan <code>[pause]</code>, <code>[slow]</code>, <code>[fast]</code>, <code>[whisper]</code> di naskah —
+        worker memecahnya jadi segmen dan menyisipkan jeda sungguhan. Tag emosi seperti
+        <code>[soft]</code> atau <code>[emphasis]</code> tidak dikenali model dan akan diabaikan.
+      </div>
+      <div class="notice-actions">
+        <button class="mini-btn" type="button" data-view="guide">Buka Panduan</button>
+        <button class="mini-btn" type="button" id="whatsnew-close" aria-label="Tutup">Tutup</button>
+      </div>
+    </div>
+    <!-- ---------------------------- STUDIO ---------------------------- -->
+    <section class="card" data-view-panel="studio">
+      <div class="card-head">
+        <nav class="tabs" role="tablist">
+          <button class="tab is-active" type="button" role="tab" data-tab="clone">Voice Clone</button>
+          <button class="tab" type="button" role="tab" data-tab="design">Voice Design</button>
+        </nav>
+        <span class="card-meta" data-device-short></span>
+      </div>
+
+      <!-- VOICE CLONE -->
+      <div class="split" data-panel="clone">
+        <div class="stack">
+          <div class="surface">
+            <label class="field">
+              <span class="field-label">Naskah Teks</span>
+              <textarea id="vc-text" rows="5" placeholder="Ketik naskah yang ingin diucapkan…"></textarea>
+            </label>
+            <div class="tplbar" data-tplbar="vc-text"></div>
+            <div class="tagbar" data-tagbar="vc-text"></div>
+            <div class="counter"><span id="vc-count">0</span> karakter</div>
+
+            <label class="field">
+              <span class="field-label">Audio Referensi <em>3&ndash;10 detik, suara bersih</em></span>
+              <div class="file" data-file>
+                <input id="vc-ref" type="file" accept="audio/*">
+                <span class="file-face">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+                  </svg>
+                  <b data-file-name>Pilih berkas audio</b>
+                  <small>WAV, MP3, atau M4A</small>
+                </span>
+              </div>
+            </label>
+          </div>
+
+          <details class="acc">
+            <summary>Opsi Suara</summary>
+            <label class="field">
+              <span class="field-label">Transkrip Audio Referensi <em>opsional &mdash; kosong berarti ASR otomatis</em></span>
+              <textarea id="vc-reftext" rows="2" placeholder="Isi teks yang diucapkan di audio referensi…"></textarea>
+            </label>
+            <label class="field">
+              <span class="field-label">Bahasa</span>
+              <select id="vc-lang" data-lang></select>
+            </label>
+            <label class="field">
+              <span class="field-label">Gaya Suara (Instruct)</span>
+              <input id="vc-instruct" type="text" list="instruct-options"
+                     placeholder="contoh: female, low pitch, whisper" spellcheck="false" autocomplete="off">
+              <span class="field-hint" data-instruct-hint></span>
+            </label>
+          </details>
+
+          <details class="acc" data-adv="vc"><summary>Pengaturan Lanjutan</summary></details>
+        </div>
+
+        <div class="stack">
+          <div class="surface result">
+            <div class="result-head">
+              <span class="field-label">Hasil Audio</span>
+              <span class="card-meta" data-meta="clone"></span>
+            </div>
+            <audio data-audio="clone" controls hidden></audio>
+            <p class="placeholder" data-placeholder="clone">Hasil audio akan muncul di sini.</p>
+            <p class="alert" data-error="clone" hidden></p>
+            <p class="alert alert-warn" data-notes="clone" hidden></p>
+            <button class="btn btn-primary btn-block" type="button" data-gen="clone">
+              <span class="spin" hidden></span><span>Generate Voice Clone</span>
+            </button>
+            <p class="hint">Ctrl + Enter untuk generate.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOICE DESIGN -->
+      <div class="split" data-panel="design" hidden>
+        <div class="stack">
+          <div class="surface">
+            <label class="field">
+              <span class="field-label">Naskah Teks</span>
+              <textarea id="vd-text" rows="5" placeholder="Ketik naskah yang ingin diucapkan…"></textarea>
+            </label>
+            <div class="tplbar" data-tplbar="vd-text"></div>
+            <div class="tagbar" data-tagbar="vd-text"></div>
+            <div class="counter"><span id="vd-count">0</span> karakter</div>
+
+            <label class="field">
+              <span class="field-label">Bahasa</span>
+              <select id="vd-lang" data-lang></select>
+            </label>
+
+            <div class="cats" id="vd-cats"></div>
+          </div>
+
+          <div class="surface">
+            <span class="field-label">Instruct Terkirim</span>
+            <code class="preview" id="vd-instruct-preview">(otomatis)</code>
+            <p class="alert alert-warn" id="vd-conflict" hidden></p>
+            <label class="field">
+              <span class="field-label">Instruct Tambahan <em>opsional</em></span>
+              <input id="vd-instruct" type="text" list="instruct-options"
+                     placeholder="contoh: whisper, british accent" spellcheck="false" autocomplete="off">
+              <span class="field-hint" data-instruct-hint="vd"></span>
+            </label>
+          </div>
+
+          <details class="acc" data-adv="vd"><summary>Pengaturan Lanjutan</summary></details>
+        </div>
+
+        <div class="stack">
+          <div class="surface result">
+            <div class="result-head">
+              <span class="field-label">Hasil Audio</span>
+              <span class="card-meta" data-meta="design"></span>
+            </div>
+            <audio data-audio="design" controls hidden></audio>
+            <p class="placeholder" data-placeholder="design">Hasil audio akan muncul di sini.</p>
+            <p class="alert" data-error="design" hidden></p>
+            <p class="alert alert-warn" data-notes="design" hidden></p>
+            <button class="btn btn-primary btn-block" type="button" data-gen="design">
+              <span class="spin" hidden></span><span>Generate Voice Design</span>
+            </button>
+            <p class="hint">Ctrl + Enter untuk generate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------------------- PANDUAN --------------------------- -->
+    <section class="card" data-view-panel="guide" hidden>
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">Panduan</h2>
+          <p class="card-sub">Apa yang benar-benar didukung model, dan apa yang tidak. Daftar di bawah diambil langsung dari worker yang sedang terhubung.</p>
+        </div>
+      </div>
+
+      <div class="guide">
+        <section class="guide-block">
+          <h3>1 &middot; Menghubungkan worker</h3>
+          <p>Jalankan <code data-guide-notebook>voizgenWorker.ipynb</code> di Google Colab dengan runtime <b>T4 GPU</b>. Sel mencetak
+          <b>Kode Akses</b> (bila gateway diisi) atau <b>Tiket Koneksi</b>. Tempel di panel <b>Koneksi Worker</b>.
+          Sel Colab harus tetap berjalan selama dipakai — kalau runtime mati, koneksi ikut mati.</p>
+          <p>Dua mesin tersedia — pilih salah satu, kontrak API-nya sama:</p>
+          <ul class="guide-list" data-guide-notebooks></ul>
+        </section>
+
+        <section class="guide-block">
+          <h3>2 &middot; Voice Clone vs Voice Design</h3>
+          <p><b>Voice Clone</b> meniru suara dari audio referensi 3&ndash;10 detik. Ini mode paling stabil —
+          model dilatih terutama untuk tugas ini. Transkrip referensi opsional; kalau dikosongkan, Whisper
+          mentranskrip otomatis.</p>
+          <p data-guide-design></p>
+        </section>
+
+        <section class="guide-block">
+          <h3>3 &middot; Arahan naskah</h3>
+          <p>Diproses worker sebelum sintesis, masing-masing dipetakan ke kontrol model yang nyata.</p>
+          <table class="guide-table">
+            <tbody>
+              <tr><td><code>[pause]</code></td><td>jeda sunyi 0,4 detik</td></tr>
+              <tr><td><code>[pause:1.5]</code></td><td>jeda sesuai angka, maksimum 5 detik</td></tr>
+              <tr><td><code>[slow]</code> / <code>[fast]</code></td><td data-guide-speed></td></tr>
+              <tr><td><code>[whisper]</code></td><td data-guide-whisper></td></tr>
+              <tr><td><code>[normal]</code></td><td>kembalikan kecepatan &amp; bisikan ke normal</td></tr>
+            </tbody>
+          </table>
+          <p class="guide-note" data-guide-batch></p>
+        </section>
+
+        <section class="guide-block">
+          <h3 data-guide-tags-title>4 &middot; Tag non-verbal</h3>
+          <p data-guide-tags-intro></p>
+          <div class="guide-chips" data-guide-tags></div>
+          <p class="guide-note" data-guide-tagnote hidden></p>
+        </section>
+
+        <section class="guide-block">
+          <h3 data-guide-instruct-title>5 &middot; Instruct yang diterima</h3>
+          <p data-guide-instruct-intro></p>
+          <div class="guide-chips" data-guide-instruct></div>
+        </section>
+
+        <section class="guide-block">
+          <h3>6 &middot; Yang tidak didukung</h3>
+          <ul class="guide-list" data-guide-unsupported></ul>
+        </section>
+      </div>
+    </section>
+
+    <!-- ---------------------------- RIWAYAT --------------------------- -->
+    <section class="card" data-view-panel="history" hidden>
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">Riwayat Generate</h2>
+          <p class="card-sub">Delapan hasil terakhir sesi ini. Tersimpan di memori browser, hilang saat halaman ditutup.</p>
+        </div>
+        <button class="btn btn-quiet" type="button" id="hist-clear">Bersihkan</button>
+      </div>
+      <ul id="history" class="history"><li class="empty">Belum ada hasil.</li></ul>
+    </section>
+  </main>
+</div>
+
+<!-- ============================== MODAL ============================== -->
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h2 class="modal-title" id="modal-title">Koneksi Worker</h2>
+    <p class="modal-body" data-only="gateway" hidden>
+      Jalankan <code>voizgenWorker.ipynb</code> di Google Colab (Runtime &rarr; T4 GPU) dengan
+      <code>GATEWAY_URL</code> dan <code>REGISTER_KEY</code> terisi, lalu masukkan <b>Kode Akses</b>
+      yang dicetak sel tersebut. URL worker tidak pernah melewati browser.
+    </p>
+    <label class="field" data-only="gateway" hidden>
+      <span class="field-label">Kode Akses</span>
+      <input id="cfg-code" type="text" placeholder="XXXX-XXXX" maxlength="9" spellcheck="false"
+             autocomplete="off" autocapitalize="characters">
+    </label>
+
+    <p class="modal-body" data-only="direct">
+      Jalankan <code>voizgenWorker.ipynb</code> di Google Colab (Runtime &rarr; T4 GPU), lalu tempel
+      <b>Tiket Koneksi</b> yang dicetak sel tersebut. Tiket sudah berisi URL sekaligus token, dan
+      hanya disimpan di browser ini.
+    </p>
+    <label class="field" data-only="direct">
+      <span class="field-label">Tiket Koneksi</span>
+      <input id="cfg-ticket" type="text" placeholder="voizgen_aHR0cHM6Ly8…" spellcheck="false" autocomplete="off">
+    </label>
+    <details class="acc" id="cfg-manual" data-only="direct">
+      <summary>Isi manual</summary>
+      <label class="field">
+        <span class="field-label">Worker URL</span>
+        <input id="cfg-url" type="url" placeholder="https://xxxx-xxxx.trycloudflare.com" spellcheck="false" autocomplete="off">
+      </label>
+      <label class="field">
+        <span class="field-label">Token</span>
+        <input id="cfg-token" type="password" placeholder="token dari output Colab" spellcheck="false" autocomplete="off">
+      </label>
+    </details>
+    <p class="alert" id="cfg-error" hidden></p>
+    <div class="modal-foot">
+      <a class="btn btn-quiet btn-notebook" data-notebook hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/>
+          <path d="M4 16.5h14"/><path d="M9 8h6"/><path d="M9 11.5h4"/>
+        </svg>
+        <span data-notebook-label>Notebook Worker</span>
+      </a>
+      <div class="modal-foot-actions">
+        <button class="btn btn-quiet" type="button" data-close-cfg>Tutup</button>
+        <button class="btn btn-primary" type="button" id="btn-connect">
+          <span class="spin" hidden></span><span>Hubungkan</span>
+        </button>
+      </div>
+    </div>
+    <p class="hint" data-notebook-hint hidden></p>
+  </div>
+</div>
+
+<datalist id="instruct-options"></datalist>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "voizgen-gateway",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "stage": "node scripts/stage.mjs",
+    "dev": "node scripts/stage.mjs && wrangler dev",
+    "deploy": "node scripts/stage.mjs && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.59.2"
+  }
+}

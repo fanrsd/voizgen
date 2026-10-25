@@ -1,0 +1,26 @@
+name = "voizgen"
+main = "src/index.js"
+compatibility_date = "2025-08-01"
+
+# Web app statis dilayani dari origin yang sama dengan /api/*,
+# sehingga browser tidak butuh CORS dan cukup mengirim cookie sesi.
+[assets]
+directory = "../web"
+binding = "ASSETS"
+
+# Buat dulu: wrangler kv namespace create SESSIONS  -> tempel id-nya di sini.
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# Opsional: tautan notebook worker yang bisa dibuka langsung Colab, satu per mesin
+# (hanya Drive / GitHub / Gist yang didukung Colab). Kosong -> web app menyajikan
+# tombol unduh berkas .ipynb dari origin ini.
+[vars]
+NOTEBOOK_URL = ""           # OmniVoice  -> voizgenWorker.ipynb
+NOTEBOOK_URL_VOXCPM2 = ""   # VoxCPM2    -> voxcpm2Worker.ipynb
+
+# REGISTER_KEY tidak ditulis di sini. Set sebagai secret:
+#   wrangler secret put REGISTER_KEY
+# Untuk `wrangler dev`, taruh di gateway/.dev.vars:
+#   REGISTER_KEY=kunci-rahasia-anda
